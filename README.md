@@ -8,7 +8,7 @@ git clone https://github.com/pansinm/joplin-server-plantuml.git
 
 cd joplin-server-plantuml
 
-# extract file from container
+# extract MdToHtml.js from container
 sudo docker create joplin/server:latest | xargs -I % sudo docker cp %:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml.js .
 ```
 2. edit MdToHtml.js
