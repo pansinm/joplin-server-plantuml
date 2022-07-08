@@ -6,9 +6,13 @@ const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
   entry: { plantuml: "./src/plantuml.js" },
+  optimization: {
+    minimize: false,
+  },
+  target: "node",
   output: {
     path: path.resolve(__dirname, "dist"),
-    libraryTarget: 'commonjs'
+    libraryTarget: "commonjs",
   },
   plugins: [
     // Add your plugins here
