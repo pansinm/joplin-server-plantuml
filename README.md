@@ -14,11 +14,11 @@ sudo docker create joplin/server:latest | xargs -I % sudo docker cp %:/home/jopl
 2. edit MdToHtml.js
 ```diff
 const rules = {
-+   fence: require('./MdToHtml/rules/plantuml').default,
++   plantuml: require('./MdToHtml/rules/plantuml').default,
     fence: require('./MdToHtml/rules/fence').default,
 ```
-3. modify docker-compose.yml
-```yml
+3. edit docker-compose.yml
+```diff
     app:
         image: joplin/server:latest
         depends_on:
@@ -34,4 +34,4 @@ const rules = {
             - APP_PORT=22300
 
 ```
-4. docker-compose up
+1. docker-compose up
