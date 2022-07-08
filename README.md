@@ -3,14 +3,14 @@
 ## Usage
  
 1. Prepare
-```sh
-git clone https://github.com/pansinm/joplin-server-plantuml.git
-
-cd joplin-server-plantuml
-
+```bash
 # extract file from container
 sudo docker create joplin/server:latest | xargs -I % sudo docker cp %:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml.js .
+
+# download plantuml plugin
+wget https://raw.githubusercontent.com/pansinm/joplin-server-plantuml/main/dist/plantuml.js
 ```
+
 2. edit MdToHtml.js
 ```diff
 const rules = {
@@ -28,10 +28,10 @@ const rules = {
         restart: unless-stopped
 +       volumes:
 +           - ./MdToHtml.js:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml.js
-+           - ./dist/plantuml.js:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml/rules/plantuml.js
++           - ./plantuml.js:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml/rules/plantuml.js
         environment:
 +           - PLANTUML_SERVER=http://your.plantuml.server
             - APP_PORT=22300
 
 ```
-1. docker-compose up
+4. docker-compose up
