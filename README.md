@@ -8,7 +8,7 @@ cd server
 wget https://raw.githubusercontent.com/pansinm/joplin-server-plantuml/main/dist/plantuml.js
 cp plantuml.js ./node_modules/@joplin/renderer/MdToHtml/rules/
 ```
-2. add the rule to renderer. edit `node_modules/@joplin/renderer/MdToHtml.js` and save
+2. edit `node_modules/@joplin/renderer/MdToHtml.js` to import the rule. 
 ```diff
 const rules = {
     fence: require('./MdToHtml/rules/fence').default,
@@ -38,11 +38,11 @@ const rules = {
 # extract MdToHtml.js from container
 sudo docker create joplin/server:latest | xargs -I % sudo docker cp %:/home/joplin/packages/server/node_modules/@joplin/renderer/MdToHtml.js .
 
-# download plantuml rule
+# download plantuml rule file
 wget https://raw.githubusercontent.com/pansinm/joplin-server-plantuml/main/dist/plantuml.js
 ```
 
-2. edit MdToHtml.js
+2. edit MdToHtml.js to import pantuml rule
 ```diff
 const rules = {
     fence: require('./MdToHtml/rules/fence').default,
@@ -62,7 +62,7 @@ const rules = {
 };
 
 ```
-3. replace files. edit `docker-compose.yml` and save
+3. edit `docker-compose.yml` to replace files.
 ```diff
     app:
         image: joplin/server:latest
